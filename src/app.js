@@ -1,5 +1,5 @@
 function formatDate(timestamp) {
-    let date = new Date(timestamp);
+  let date = new Date(timestamp);
   
     let days = [
       "Sunday",
@@ -10,6 +10,8 @@ function formatDate(timestamp) {
       "Friday",
       "Saturday"
     ];
+    
+
     let day = days[date.getDay()];
     return `${day} ${formatHours(timestamp)}`;
   }
