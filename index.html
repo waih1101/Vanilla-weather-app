@@ -2,127 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<h>, initial-scale=1.0">
-    
-    <link  rel="stylesheet" href="src/style.css" />
+    <meta name="viewport" content="width<h>, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link  rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
 </head>
 <body>
     <div class="container">
-        <body>
-            <div class="container">
-              <div class="weather-app">
-                <form class="search-form" id="search-form">
-                  <div class="row">
-                    <div class="col-9">
-                      <input
-                        type="search"
-                        placeholder="Enter a city.."
-                        autofocus="on"
-                        autocomplete="off"
-                        id="city-input"
-                        class="form-control shadow-sm"
-                      />
-                    </div>
-                    <div class="col-3">
-                      <input
-                        type="submit"
-                        value="Search"
-                        class="form-control btn btn-primary shadow-sm"
-                      />
-                    </div>
-                  </div>
-                </form>
-      
-            <h1 id="city">
-                Lisbon, Portugal
-              </h1>
-             <h2 id="date">
-               Monday 11:27 
-             </h2>
-      
-                 <div class="float-left">
-                    <span class="temperature" id="temperature">23</span>
-                    <span class="units">
-                      <a href="#" id="celsius-link">°C</a> |
-                      <a href="#" id="fahrenheit-link">°F</a>
-                    </span>😎Sunny 
-                  </div>
-             
-            </br>
-            </br>
-      
-            <div class="row">
-              <div class="col-2">
-                8/18
-                <br />
-                Tue
-                <br />
-                ⛅
-                <br />
-                18°C
+    <div class="weather-app-wrapper">
+    <div class="weather-app">
+  
+      <form class="mb-3" id="search-form">
+      <div class="row">
+      <div class="col-9">
+        <input
+        type="search"
+        placeholder="Enter a city.."
+        autofocus="on"
+        autocomplete="off"
+        id="city-input"
+        class="form-control"
+        />
+        </div>
+        <div class="col-3">
+            <input
+            type="submit"
+            value="Search"
+            class="btn btn-primary w-100"
+            />
+        </div>
+        </div>
+        </form>
+        <div class="overview">
+        <h1 id="city">
+        </h1>
+        <ul>
+            <li>Local Time: <span id="date" class="localTime"></span></li>
+            
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="clearfix weather-temperature">
+                <img src="data:image/png;base64,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" alt="Clear" id="icon" class="float-left" />
+              <div class="float-left">
+                <strong id="temperature"></strong
+                ><span class="units"
+                  ><a href="#" id="celsius-link" class="active">°C</a> |
+                  <a href="#" id="fahrenheit-link">°F</a></span
+                >
               </div>
-      
-              <div class="col-2">
-                8/19
-                <br />
-                Wed
-                <br />
-                ⛅
-                <br />
-                20°C
-              </div>
-      
-              <div class="col-2">
-                8/20
-                <br />
-                Thu
-                <br />
-                ☔
-                <br />
-                16°C
-              </div>
-      
-              <div class="col-2">
-                  8/21
-                  <br />
-                  Fri
-                  <br />
-                  😎
-                  <br />
-                  23°C
-                </div>
-      
-                <div class="col-2">
-                    8/22
-                    <br />
-                    Sat
-                    <br />
-                    ⛅
-                    <br />
-                    21°C
-                  </div>
-      
-                  <div class="col-2">
-                      8/23
-                      <br />
-                      Sun
-                      <br />
-                      😎
-                      <br />
-                      23°C
-                    </div>
-      
             </div>
-            </div>
-              <a href="https://github.com/waih1101/wai-plusweek6/commit/35a8fc7ac04b6340225174ebbcf29bc0e16d3b22">open-source-code</a> by Wai Ping Hui
-      
-    <h1>
-    Weather App
-    </h1>
-    <a href="" class="btn btn-primary">CLick Me</a>
-</div>
+          </div>
+          <div class="col-6">
+            <ul>
+              <li>Precipitation:<span id="precipitation"></span>%</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
+              <li id="description"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row weather-forecast" id="forecast"></div>
+      </div>
+       </br>
+
+
+    <small>
+    <a href="https://github.com/waih1101/vanilla-weather-app" target="_blank">open-source-code</a> by Wai Ping Hui
+    </small>
+    </div>
+    </div>
     <script src="src/app.js"></script>
 </body>
 </html>
