@@ -1,29 +1,31 @@
-        h1 {
+    h1 {
         text-align: left;
-        font-weight: 400;
-        font-family:monospace; 
+        font-weight: 600;
+        font-family: Tahoma;
         margin-bottom: 0;
+        color:white;
       }
 
       .container {
         margin: 0 auto;
         display: block;
-        border-color: blue;
-        background-color: #fff;
+        background-color:white;
       }
 
       .localTime {
-        background: rgb(245, 243, 243);
-        font-family: monospace;
+        font-family: Tahoma;
         font-size: 15px;
         width: 170px;
-      
+        color: white;
+        background-color: lightgrey;
       }
 
       p {
         display: inline;
         font-size: 40px;
         font-weight: 30px;
+        
+    
       }
 
       .weather-app-wrapper {
@@ -32,13 +34,15 @@
       }
 
       .weather-app {
-        font-family: monospace;
+        font-family: Tahoma;
         font-size: 20px;
         margin: 30px auto;
+        background-image: url("https://www.cambridge.org/elt/blog/wp-content/uploads/2019/02/background-3268840_1920.jpg");
         max-width: 600px;
         padding: 20px;
         border: 1px solid grey;
         border-radius: 10px;
+        
       }
 
        .overview {
@@ -46,17 +50,21 @@
     }
    
       .form {
-        border-color: blueviolet;
+        border-color: rgb(188, 190, 169);
 
       }
 
-      .go {
-        background-color: lightskyblue;
+      .search {
+        background-color: lightcyan;
         border-radius: 5px 5px;
 
       }
 
+      .search:hover{
+        background-color: white;
+      }
 
+    
     ul{
         margin: 0;
         padding: 0;
@@ -66,8 +74,8 @@
         list-style: none;
         margin: 0;
         padding: 0;
-        color:grey;
-        font-family: monospace;
+        color:white;
+        font-family: Tahoma;
         font-size: 16px;
         font-weight: 100;
         height: 18px;
@@ -87,7 +95,7 @@
       }
       
       .weather-temperature strong {
-        color: rgb(33, 33, 33);
+        color: white;
         font-size: 64px;
         line-height: 1;
         font-weight: 400;
@@ -100,7 +108,7 @@
       }
       
       .weather-temperature .active {
-        color: rgb(33, 33, 33);
+        color: white;
         cursor: default;
       }
       
@@ -131,7 +139,7 @@
       
       .weather-forecast-temperature {
         text-align: center;
-        color: rgb(135, 135, 135);
+        color: black;
         font-size: 13px;
         font-weight: 400;
         height: auto;
